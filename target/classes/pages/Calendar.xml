@@ -1,0 +1,27 @@
+<page>
+    <bind>Календарь</bind>
+    <name>Calendar</name>
+    <elements>
+        <element bind="Текущий год" name="SelectedYear" type="Label"
+                 iosPath="chain"
+                 androidPath="//android.widget.TextView[@resource-id='android:id/date_picker_header_year']"/>
+        <element bind="Текущая дата" name="SelectedDate" type="Label"
+                 iosPath="chain"
+                 androidPath="//android.widget.TextView[@resource-id='android:id/date_picker_header_date']"/>
+        <element bind="Дни" name="ActiveMonth" type="ItemGroup"
+                 iosPath="chain"
+                 androidPath="//android.view.View[@resource-id='android:id/month_view']/android.view.View"/>
+        <element bind="Назад" name="MonthBack" type="Button"
+                 iosPath="chain"
+                 androidPath="//android.widget.ImageButton[@content-desc='Previous month']"/>
+        <element bind="Вперёд" name="MonthForward" type="Button"
+                 iosPath="chain"
+                 androidPath="//android.widget.ImageButton[@content-desc='Next month']"/>
+        <element bind="ОК" name="OK" type="Button"
+                 iosPath="chain"
+                 androidPath="//android.widget.Button[@text='OK']"/>
+        <element bind="Отмена" name="Cancel" type="Button"
+                 iosPath="chain"
+                 androidPath="//android.widget.Button[@text='CANCEL']"/>
+    </elements>
+</page>

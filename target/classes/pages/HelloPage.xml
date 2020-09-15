@@ -1,0 +1,47 @@
+<page>
+    <bind>Приветствие</bind>
+    <name>HelloPage</name>
+    <elements>
+<!--        android only-->
+        <element bind="Информация"
+                 name="information"
+                 type="Button"
+                 androidPath="//android.widget.TextView[@resource-id='ru.mobiledimension.kbr:id/action_info']"/>
+        <element bind="Способы предсказания ПДР"
+                 name="BirthDatePredictionWays"
+                 type="ItemGroup"
+                 androidPath="//android.widget.LinearLayout[@resource-id='ru.mobiledimension.kbr:id/cnt_header']"/>
+        <element bind="Первый день последнего цикла"
+                 name="lastCycleFirstDayField"
+                 type="TextField"
+                 androidPath="//android.widget.EditText[@resource-id='ru.mobiledimension.kbr:id/edt_first_of_last_period']"
+                 iosPath="**/XCUIElementTypeStaticText[`name='1-й день последнего цикла'`]"/>
+        <element bind="Средняя продолжительность цикла"
+                 name="averageCycleDuration"
+                 type="TextField"
+                 androidPath="//android.widget.EditText[@resource-id='ru.mobiledimension.kbr:id/edt_average_period_duration']"
+                 iosPath="**/XCUIElementTypeStaticText[`name='Средняя продолжительность цикла'`]"/>
+        <element bind="Предполагаемая дата родов"
+                 name="ExpectedBirthDate"
+                 type="TextField"
+                 iosPath="**/XCUIElementTypeStaticText[`name='Роды'`]"/>
+        <element bind="Срок беременности"
+                 name="PregnancyTime"
+                 type="TextField"
+                 iosPath="**/XCUIElementTypeStaticText[`name='Срок беременности'`]"/>
+        <element bind="Дата зачатия"
+                 name="ConceptionDate"
+                 type="TextField"
+                 iosPath="**/XCUIElementTypeStaticText[`name='Дата зачатия'`]"/>
+        <element bind="Подтверждение пользовательского соглашения"
+                 name="UserAgreementTermsAcceptance"
+                 type="CheckBox"
+                 androidPath="//android.widget.CheckBox[@resource-id='ru.mobiledimension.kbr:id/cb_agreement']"
+                 iosPath="**/XCUIElementTypeButton[`name='checkboxOff'`]"/>
+        <element bind="Продолжить"
+                 name="Accept"
+                 type="Button"
+                 androidPath="//android.widget.Button[@resource-id='ru.mobiledimension.kbr:id/btn_save']"
+                 iosPath="**/XCUIElementTypeButton[`name='Готово'`]"/>
+    </elements>
+</page>

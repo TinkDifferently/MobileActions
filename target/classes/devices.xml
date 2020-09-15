@@ -1,0 +1,50 @@
+<devices>
+    <platforms>
+        <platform type="ios">
+            <common>
+                <capability platformName="iOS"/>
+                <capability automationName="XCUITest"/>
+                <capability useNewWDA="true"/>
+                <capability noReset="false"/>
+            </common>
+            <real>
+                <capability xcodeOrgId="84LG99WF4T"/>
+                <capability xcodeSigningId="iPhone Developer"/>
+                <capability bundleId="ru.medkrug.kbrapp"/>
+            </real>
+        </platform>
+        <platform type="Android">
+            <common>
+                <capability platformName="Android"/>
+                <capability fullReset="true"/>
+                <capability automationName="UIAutomator2"/>
+                <capability autoGrantPermissions="true"/>
+                <capability disableWindowAnimation="true"/>
+            </common>
+        </platform>
+    </platforms>
+    <instances>
+        <instance>
+            <bind>IOS_SINGLE_DEVICE</bind>
+            <type>ios real</type>
+            <capabilities>
+                <capability deviceName="iPhone (Romab)"/>
+                <capability udid="auto"/>
+            </capabilities>
+        </instance>
+        <instance>
+            <bind>ANDROID_SINGLE_DEVICE</bind>
+            <type>android real</type>
+            <capabilities>
+                <capability deviceName="*"/>
+            </capabilities>
+        </instance>
+        <instance>
+            <bind>PIXEL_CLASSIC</bind>
+            <type>android real</type>
+            <capabilities>
+                <capability deviceName="PixelClassic"/>
+            </capabilities>
+        </instance>
+    </instances>
+</devices>
