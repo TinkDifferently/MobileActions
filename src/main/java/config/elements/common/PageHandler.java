@@ -41,15 +41,14 @@ public final class PageHandler {
         }
     }
 
-    private static PageHandler instance=new PageHandler();
+    private static PageHandler instance = new PageHandler();
 
-    public static PageHandler getInstance(){
+    public static PageHandler getInstance() {
         return instance;
     }
 
     /**
      * собирает ссылки на все существующие страницы
-     *
      */
     @SuppressWarnings("unchecked")
     private void populatePages() throws ClassNotFoundException {
@@ -72,18 +71,18 @@ public final class PageHandler {
                 break;
             }
         }
-        BiConsumer<Page,Class> biConsumer=(key,value)->
-                pageNames.put(key.value(),value);
-        classes.forEach(o->{
-            Pages pages= (Pages) o.getAnnotation(Pages.class);
-            if (pages!=null){
-                for (Page page:pages.value())
-                    biConsumer.accept(page,o);
+        BiConsumer<Page, Class> biConsumer = (key, value) ->
+                pageNames.put(key.value(), value);
+        classes.forEach(o -> {
+            Pages pages = (Pages) o.getAnnotation(Pages.class);
+            if (pages != null) {
+                for (Page page : pages.value())
+                    biConsumer.accept(page, o);
                 return;
             }
-            Page page= (Page) o.getAnnotation(Page.class);
-            if (page!=null){
-                biConsumer.accept(page,o);
+            Page page = (Page) o.getAnnotation(Page.class);
+            if (page != null) {
+                biConsumer.accept(page, o);
             }
         });
     }
@@ -131,6 +130,9 @@ public final class PageHandler {
     @SuppressWarnings("unchecked")
     public <P extends CommonPage> P getPage(String name) {
         Class<P> pageClass = (Class<P>) pageNames.get(name);
+        if (pageClass == null) {
+            throw new RuntimeException(String.format("Page '%s' is not registered", name));
+        }
         return getPage(pageClass);
     }
 

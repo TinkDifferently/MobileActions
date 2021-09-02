@@ -88,7 +88,7 @@ public class ElementDecorator extends AppiumFieldDecorator {
         if (locator == null) {
             return null;
         }
-        if (CommonElement.class.isAssignableFrom(field.getType())) {
+        if (BaseElement.class.isAssignableFrom(field.getType())) {
             WebElement webElement = proxyForLocator(locator);
             return createInstance(field.getType(), webElement);
         }
@@ -117,7 +117,7 @@ public class ElementDecorator extends AppiumFieldDecorator {
         } catch (ClassNotFoundException e) {
             return false;
         }
-        if (!CommonElement.class.isAssignableFrom(listTypeClass)) {
+        if (!BaseElement.class.isAssignableFrom(listTypeClass)) {
             return false;
         }
         return isSupportedAnnotationPresent(field);
@@ -131,7 +131,7 @@ public class ElementDecorator extends AppiumFieldDecorator {
      * @return true, если поле следует декорировать
      */
     private boolean isDecoratableField(Field field) {
-        return isSupportedAnnotationPresent(field) && CommonElement.class.isAssignableFrom(field.getType());
+        return isSupportedAnnotationPresent(field) && BaseElement.class.isAssignableFrom(field.getType());
     }
 
     /**
@@ -152,17 +152,17 @@ public class ElementDecorator extends AppiumFieldDecorator {
     }
 
     @SuppressWarnings("unchecked")
-    private List<? extends CommonElement> decorateList(Field field, ElementLocator locator) {
+    private List<? extends BaseElement> decorateList(Field field, ElementLocator locator) {
         Type genericType = field.getGenericType();
-        Class<? extends CommonElement> listTypeClass;
+        Class<? extends BaseElement> listTypeClass;
         Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
         try {
-            listTypeClass = (Class<? extends CommonElement>) Class.forName(listType.getTypeName());
+            listTypeClass = (Class<? extends BaseElement>) Class.forName(listType.getTypeName());
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-        List<? extends CommonElement> proxiedList = proxyForListLocator(locator, listTypeClass);
+        List<? extends BaseElement> proxiedList = proxyForListLocator(locator, listTypeClass);
 
         return Collections.unmodifiableList(proxiedList);
     }
@@ -176,7 +176,7 @@ public class ElementDecorator extends AppiumFieldDecorator {
      * @return объект элемента
      */
     @SuppressWarnings("unchecked")
-    private <T extends CommonElement> T createInstance(Class<?> klass, WebElement element) {
+    private <T extends BaseElement> T createInstance(Class<?> klass, WebElement element) {
         try {
             return (T) klass.getConstructor(WebElement.class).newInstance(element);
         } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
@@ -196,7 +196,7 @@ public class ElementDecorator extends AppiumFieldDecorator {
     }
 
     @SuppressWarnings("unchecked")
-    private <T extends CommonElement> List<T> proxyForListLocator(ElementLocator locator, Class<T> klass) {
+    private <T extends BaseElement> List<T> proxyForListLocator(ElementLocator locator, Class<T> klass) {
         return (List<T>) Proxy.newProxyInstance(ElementDecorator.class.getClassLoader(),
                 new Class[]{List.class},
                 new ElementsListInvocationHandler<>(locator, klass));
@@ -208,7 +208,7 @@ public class ElementDecorator extends AppiumFieldDecorator {
      *
      * @param <T> type of elements in list
      */
-    private final class ElementsListInvocationHandler<T extends CommonElement> implements InvocationHandler {
+    private final class ElementsListInvocationHandler<T extends BaseElement> implements InvocationHandler {
 
         private List<T> elementsCache;
         private ElementLocator locator;

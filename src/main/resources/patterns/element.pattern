@@ -1,0 +1,6 @@
+@Element("$elementBindPlaceHolder")
+    public $elementTypePlaceHolder get$elementNamePlaceHolder$elementTypePlaceHolder(){
+        return DriverController.getInstance().getCurrentPlatform() == Platform.IOS
+                ? new $elementTypePlaceHolder($iosByPlaceHolder)
+                : new $elementTypePlaceHolder($androidByPlaceHolder);
+    }

@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public abstract class CommonPage<ElementType extends CommonElement> {
+public abstract class CommonPage<ElementType extends BaseElement> {
 
     protected final WebDriver driver;
 
@@ -116,8 +116,8 @@ public abstract class CommonPage<ElementType extends CommonElement> {
             T element = (T) (member.getClass().isAssignableFrom(Field.class)
                     ? ((Field) member).get(this)
                     : ((Method) member).invoke(this));
-            if (element instanceof CommonElement) {
-                ((CommonElement) element).setFieldName(name);
+            if (element instanceof BaseElement) {
+                ((BaseElement) element).setFieldName(name);
             }
             return element;
         } catch (IllegalAccessException | InvocationTargetException e) {

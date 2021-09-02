@@ -1,7 +1,7 @@
 package actions;
 
 import actions.annotations.AndroidAction;
-import actions.annotations.CommonAction;
+import actions.annotations.MobileAction;
 import actions.annotations.IOSAction;
 import config.elements.common.PageHandler;
 import config.elements.common.interfaces.IClickable;
@@ -15,7 +15,6 @@ import utils.CustomReflection;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * Общий предок для всех action-ов описывающих взаимодействие со страницами
@@ -84,7 +83,7 @@ public class PageAction extends Action{
      */
     protected void click(String target){
         getElement(target)
-                .query(IClickable.class)
+                .as(IClickable.class)
                 .click();
     }
 
@@ -108,8 +107,8 @@ public class PageAction extends Action{
                     if (invokable.isPresent() && invokable.get().getAnnotation(AndroidAction.class).ignore())
                         return;
                 }
-                invokable.or(() -> CustomReflection.getAnnotatedMethods(this.getClass(), CommonAction.class).stream()
-                        .filter(o -> o.getAnnotation(CommonAction.class).value().equals(actionName)).findFirst())
+                invokable.or(() -> CustomReflection.getAnnotatedMethods(this.getClass(), MobileAction.class).stream()
+                        .filter(o -> o.getAnnotation(MobileAction.class).value().equals(actionName)).findFirst())
                         .orElseThrow(NoSuchActionException::new).invoke(this);
             } catch (Exception e) {
                 CustomLogger.fail(String.format("Не удалось выполнить действие '%s'", actionName), e);

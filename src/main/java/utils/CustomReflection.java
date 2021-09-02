@@ -87,7 +87,7 @@ public class CustomReflection {
             if (args.length == 0) {
                 return (T) getOptionalConstructor(clazz).get().newInstance();
             }
-            Class[] types = new Class[args.length];
+            Class<?>[] types = new Class[args.length];
             Arrays.stream(args).map(Object::getClass).collect(Collectors.toList()).toArray(types);
             return (T) getOptionalConstructor(clazz, types).get().newInstance(args);
         } catch (Exception e) {

@@ -1,7 +1,6 @@
 package config.elements.mobile;
 
-import config.elements.common.CommonElement;
-import config.session.DriverUtils;
+import config.elements.common.BaseElement;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -14,7 +13,7 @@ import java.util.Objects;
 /**
  * Абстрактный класс для кастомных элементов.
  */
-public abstract class AbstractMobileElement extends CommonElement {
+public abstract class AbstractMobileElement extends BaseElement {
     @Override
     public String getTagName() {
         return byExecutor.isEmpty() ? "" : byExecutor.getTagName();
