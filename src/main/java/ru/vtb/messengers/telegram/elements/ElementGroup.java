@@ -1,9 +1,9 @@
 package ru.vtb.messengers.telegram.elements;
 
-import config.elements.mobile.AbstractMobileElement;
-import config.elements.mobile.ByExecutor;
-import exceptions.LoggedException;
-import exceptions.NotImplementedException;
+import io.dimension.elements.mobile.AbstractMobileElement;
+import io.dimension.elements.mobile.ByExecutor;
+import io.dimension.exceptions.LoggedException;
+import io.dimension.exceptions.NotImplementedException;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 
@@ -27,7 +27,7 @@ public abstract class ElementGroup<I extends AbstractMobileElement> extends Abst
     }
 
     @Override
-    public ByExecutor getInitialElement() {
+    public ByExecutor $() {
         throw new NotImplementedException("Невозможно взаимодействовать с коллекцией");
     }
 

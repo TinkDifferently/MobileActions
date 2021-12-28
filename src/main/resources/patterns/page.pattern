@@ -1,11 +1,13 @@
 package ru.vtb.messengers.pages;
 
-import config.elements.common.annotations.Element;
-import config.elements.common.annotations.Page;
-import config.elements.mobile.AbstractMobilePage;
-import config.session.DriverController;
+import io.dimension.elements.base.annotations.Element;
+import io.dimension.elements.base.annotations.Page;
+import io.dimension.elements.mobile.AbstractMobilePage;
+import io.dimension.config.session.DriverController;
 import io.appium.java_client.MobileBy;
-import ru.vtb.messengers.telegram.elements.*;
+import io.dimension.elements.api.*;
+import ru.vtb.app.chat.elements.*;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 
@@ -18,6 +20,6 @@ import org.openqa.selenium.Platform;
 public class $pageNamePlaceHolder extends AbstractMobilePage {
 
     @Override
-    protected void waitForLoadFinished() {
+    public void waitForLoadFinished() {
 
     }

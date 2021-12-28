@@ -1,10 +1,10 @@
 package ru.vtb.messengers.telegram.elements;
 
-import config.elements.mobile.AbstractMobileElement;
-import config.elements.mobile.ByExecutor;
-import config.session.DriverController;
-import exceptions.NotImplementedException;
-import exceptions.NotSupportedPlatformException;
+import io.dimension.elements.mobile.AbstractMobileElement;
+import io.dimension.elements.mobile.ByExecutor;
+import io.dimension.config.session.DriverController;
+import io.dimension.exceptions.NotImplementedException;
+import io.dimension.exceptions.NotSupportedPlatformException;
 import org.jetbrains.annotations.NotNull;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
@@ -13,7 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.CustomLogger;
+import io.dimension.utils.CustomLogger;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -60,7 +60,7 @@ public class DateScroller extends AbstractMobileElement {
     }
 
     private void iosPickDate(String date) {
-        getInitialElement().click();
+        $().click();
         var wheels = new WebDriverWait(DriverController.getInstance().getDriver(), 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("XCUIElementTypePickerWheel")));
         //WebElement dayWheel=wheels.stream().filter(o->o.getText().length()<3).findFirst().get();
         //WebElement monthWheel=wheels.stream().filter(o->o.getText().matches("[^0-9]+")).findFirst().get();
@@ -81,9 +81,9 @@ public class DateScroller extends AbstractMobileElement {
     }
 
     private void androidPickDay(String day) {
-        var textElement = getInitialElement().getInitialElement().findElement(By.xpath(".//android.widget.EditText"));
+        var textElement = $().getInitialElement().findElement(By.xpath(".//android.widget.EditText"));
         var targetDate = Integer.parseInt(day);
-        var rectangle = getInitialElement().getInitialElement().getRect();
+        var rectangle = $().getInitialElement().getRect();
         var highY = rectangle.getY() + rectangle.getHeight() / 10;
         var lowY = rectangle.getY() + rectangle.getHeight() * 9 / 10;
         var centerY = rectangle.getY() + rectangle.getHeight() / 2;

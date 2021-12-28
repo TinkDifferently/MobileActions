@@ -1,0 +1,50 @@
+<page>
+    <bind>Главная ВТБ</bind>
+    <name>VtbMain</name>
+    <elements>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/buttonPanel"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Select"
+                 bind="Выбор в диалоге" name="dialogOptions"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/airBar"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Select"
+                 bind="Навигация" name="Navigation"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/message_body"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Input"
+                 bind="Сообщение для отправки" name="MessageBody"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/send_message"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Button"
+                 bind="Отправить сообщение" name="SendMessage"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/fastAccessRecyclerView"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Select"
+                 bind="Быстрые кнопки" name="FastButtons"/>
+        <element androidPath="//android.widget.ImageButton[@content-desc='Назад']"
+                 iosPath=""
+                 type="Button"
+                 bind="Назад" name="Back"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/add_photo"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Button"
+                 bind="Добавить изображение" name="AddImage"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/faceliftImagesList"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Select"
+                 bind="Изображения" name="Images"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/faceliftGalleryBtn"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Button"
+                 bind="Галерея" name="Galery"/>
+    </elements>
+</page>

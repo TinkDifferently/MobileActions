@@ -1,13 +1,13 @@
 package ru.vtb.messengers.telegram.elements;
 
-import config.elements.common.interfaces.HasTitle;
-import config.elements.common.interfaces.IClickable;
-import config.elements.mobile.AbstractMobileElement;
-import config.elements.mobile.ByExecutor;
+import io.dimension.elements.base.interfaces.HasTitle;
+import io.dimension.elements.base.interfaces.Clickable;
+import io.dimension.elements.mobile.AbstractMobileElement;
+import io.dimension.elements.mobile.ByExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Item extends AbstractMobileElement implements IClickable, HasTitle {
+public class Item extends AbstractMobileElement implements Clickable, HasTitle {
     public Item(WebElement initialElement) {
         super(initialElement);
     }
@@ -27,6 +27,6 @@ public class Item extends AbstractMobileElement implements IClickable, HasTitle 
 
     @Override
     public String getTitle() {
-        return getInitialElement().getText();
+        return $().getText();
     }
 }

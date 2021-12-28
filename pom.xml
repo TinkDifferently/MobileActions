@@ -8,13 +8,14 @@
     <artifactId>chat-bot-test</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <aspectj.version>1.9.2</aspectj.version>
+        <aspectj.version>1.9.5</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
         <allure.version>2.10.0</allure.version>
         <illegal-access>permit</illegal-access>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <file.encoding>UTF-8</file.encoding>
     </properties>
 
     <dependencies>
@@ -66,6 +67,11 @@
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.8</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -137,6 +143,7 @@
                 <configuration>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        -Dfile.encoding=UTF-8
                     </argLine>
                     <suiteXmlFiles>
                         <!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
@@ -165,10 +172,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <reportVersion>2.4.1</reportVersion>
-                </configuration>
+                <version>2.10.0</version>
             </plugin>
         </plugins>
     </build>

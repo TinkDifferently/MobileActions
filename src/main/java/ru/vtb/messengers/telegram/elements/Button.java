@@ -1,11 +1,11 @@
 package ru.vtb.messengers.telegram.elements;
 
-import config.elements.common.interfaces.IClickable;
-import config.elements.mobile.AbstractMobileElement;
+import io.dimension.elements.base.interfaces.Clickable;
+import io.dimension.elements.mobile.AbstractMobileElement;
 import org.openqa.selenium.By;
-import utils.CustomLogger;
+import io.dimension.utils.CustomLogger;
 
-public class Button extends AbstractMobileElement implements IClickable {
+public class Button extends AbstractMobileElement implements Clickable {
 
     public Button(By locator) {
         super(locator);

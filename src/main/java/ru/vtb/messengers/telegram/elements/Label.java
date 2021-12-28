@@ -1,8 +1,8 @@
 package ru.vtb.messengers.telegram.elements;
 
-import config.elements.common.interfaces.HasText;
-import config.elements.mobile.AbstractMobileElement;
-import config.elements.mobile.ByExecutor;
+import io.dimension.elements.base.interfaces.HasText;
+import io.dimension.elements.mobile.AbstractMobileElement;
+import io.dimension.elements.mobile.ByExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

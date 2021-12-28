@@ -1,16 +1,27 @@
 <applications>
-<!-- тип приложения является комбинируемым. это означает, что для устройств android real и android virtual подойдет приложение типа android, если не будет более
-точного совпадения-->
-    <application bind="installed">
-        <appInfo type="ios real">
-            <capability bundleId="ru.medkrug.kbrapp"/>
-            <capability fullReset="false"/>
-            <capability noReset="true"/>
-        </appInfo>
+    <!-- тип приложения является комбинируемым. это означает, что для устройств android real и android virtual подойдет приложение типа android, если не будет более
+    точного совпадения-->
+    <application bind="telegram">
         <appInfo type="android">
             <capability appPackage="org.telegram.messenger"/>
             <capability appActivity="org.telegram.ui.LaunchActivity"/>
             <capability fullReset="false"/>
+            <capability noReset="true"/>
+        </appInfo>
+    </application>
+
+    <application bind="vtb-mobile-app">
+        <appInfo type="ios real">
+            <capability bundleId="none"/>
+            <capability fullReset="false"/>
+            <capability noReset="true"/>
+        </appInfo>
+        <appInfo type="android">
+            <capability appPackage="ru.vtb.mobilebanking.android.rc"/>
+            <capability appActivity="ru.vtb24.mobilebanking.android.gui.activity.LoadingScreenActivity"/>
+            <capability fullReset="false"/>
+            <capability noReset="true"/>
+            <capability autoAcceptAlerts="true"/>
         </appInfo>
     </application>
 </applications>

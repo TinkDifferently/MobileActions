@@ -1,9 +1,9 @@
 package ru.vtb.messengers.telegram.elements;
 
-import config.elements.mobile.AbstractMobileElement;
-import config.elements.mobile.ByExecutor;
-import config.session.DriverController;
-import exceptions.NotSupportedPlatformException;
+import io.dimension.elements.mobile.AbstractMobileElement;
+import io.dimension.elements.mobile.ByExecutor;
+import io.dimension.config.session.DriverController;
+import io.dimension.exceptions.NotSupportedPlatformException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -39,7 +39,7 @@ public class CheckBox extends AbstractMobileElement {
     public boolean getState() {
         switch (DriverController.getInstance().getCurrentPlatform()) {
             case ANDROID:
-                return Boolean.valueOf(getAttribute("checked"));
+                return Boolean.parseBoolean(getAttribute("checked"));
             case IOS:
                 String value=getAttribute("value");
                 return "1".equals(value);

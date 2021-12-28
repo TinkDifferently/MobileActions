@@ -1,0 +1,16 @@
+<page>
+    <bind>Изображения</bind>
+    <name>Images</name>
+    <elements>
+        <element androidPath="com.sec.android.app.camera:id/normal_center_button"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Button"
+                 bind="Сфотографировать" name="Shot"/>
+        <element androidPath="com.sec.android.app.camera:id/attachButtonGroup"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Select"
+                 bind="Подтвердить" name="Accept"/>
+    </elements>
+</page>

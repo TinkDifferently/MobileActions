@@ -1,6 +1,6 @@
 package ru.vtb.messengers.telegram.elements;
 
-import config.session.DriverController;
+import io.dimension.config.session.DriverController;
 import org.openqa.selenium.By;
 
 import java.util.List;

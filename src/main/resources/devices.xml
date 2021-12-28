@@ -40,10 +40,10 @@
             </capabilities>
         </instance>
         <instance>
-            <bind>PIXEL_CLASSIC</bind>
+            <bind>SAMSUNG_A52</bind>
             <type>android real</type>
             <capabilities>
-                <capability deviceName="PixelClassic"/>
+                <capability deviceName="Samsung A52"/>
             </capabilities>
         </instance>
     </instances>
