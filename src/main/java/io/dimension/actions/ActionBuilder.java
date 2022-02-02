@@ -108,7 +108,7 @@ public final class ActionBuilder {
     private void executeAction(IAction instance, String actionName) {
         var method = findAction(instance, actionName);
         if (method == null) {
-            throw new RuntimeException("never happens");
+            return;
         }
         var methodParameters = method.getParameters();
         var parameters = new Object[methodParameters.length];

@@ -14,7 +14,8 @@
         <appInfo type="ios real">
             <capability bundleId="none"/>
             <capability fullReset="false"/>
-            <capability noReset="true"/>
+            <capability noReset="false"/>
+            <capability bundleId="ru.vtb.mobilebanking.iphone.test"/>
         </appInfo>
         <appInfo type="android">
             <capability appPackage="ru.vtb.mobilebanking.android.rc"/>

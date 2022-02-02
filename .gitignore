@@ -1,5 +1,5 @@
 .idea
 *.iml
-.
+.allure
 target
 src/main/generated

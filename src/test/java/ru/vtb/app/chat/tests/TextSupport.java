@@ -9,7 +9,7 @@ public class TextSupport extends VtbTest {
                 .build();
 
         var sendSymbolMessage = actions("Приложение")
-                .data("Сообщение", String.format("текст с эмодзи %s продолжение текста", "Aro ктп # кл-$#"))
+                .data("Сообщение", String.format("текст с эмодзи %s продолжение текста", " \uD83D\uDE00 Aro ктп # кл-$#"))
                 .action("Отправить сообщение")
                 .build();
 

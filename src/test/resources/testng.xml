@@ -1,38 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Vtb suite">
-    <parameter name="device" value="SAMSUNG_A52"/>
+    <parameter name="device" value="IOS_SINGLE_DEVICE"/>
     <parameter name="app" value="vtb-mobile-app"/>
-    <test name="Эмоджи" verbose="1">
+    <parameter name="clientName" value="2060643"></parameter>
+    <!--    <test name="Отображение статусов" verbose="1">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.Statuses"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Оценки" verbose="1">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.Csi"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Эмоджи" verbose="1">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.EmojiTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Соединение">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.ConnectionTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Поддержка текста">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.TextSupport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Восстановление истории после сворачивания приложенияы">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.BackgroundTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Поддержка изображений">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.ImagesTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Цитирование">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.QuotationTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+<!--    <test name="Быстрые кнопки (Привет)">-->
+<!--        <classes>-->
+<!--            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Hi"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Быстрые кнопки (Любая)">-->
+<!--        <classes>-->
+<!--            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Any"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Быстрые кнопки (Исчезающие кнопки)">-->
+<!--        <classes>-->
+<!--            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Text"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Поиск">-->
+<!--        <classes>-->
+<!--            <class name="ru.vtb.app.chat.tests.SearchTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Заказ цифровой карты">-->
+<!--        <classes>-->
+<!--            <class name="ru.vtb.app.chat.tests.CardOrderTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="Смена пин-кода">
         <classes>
-            <class name="ru.vtb.app.chat.tests.EmojiTest"/>
-        </classes>
-    </test>
-    <test name="Соединение">
-        <classes>
-            <class name="ru.vtb.app.chat.tests.ConnectionTest"/>
-        </classes>
-    </test>
-    <test name="Поддержка текста">
-        <classes>
-            <class name="ru.vtb.app.chat.tests.TextSupport"/>
-        </classes>
-    </test>
-    <test name="Восстановление истории после сворачивания приложенияы">
-        <classes>
-            <class name="ru.vtb.app.chat.tests.BackgroundTest"/>
-        </classes>
-    </test>
-    <test name="Поддержка изображений">
-        <classes>
-            <class name="ru.vtb.app.chat.tests.ImagesTest"/>
-        </classes>
-    </test>
-    <test name="Быстрые кнопки">
-        <classes>
-            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Hi"/>
-            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Any"/>
-            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Text"/>
+            <class name="ru.vtb.app.chat.tests.PinCodeTest"/>
         </classes>
     </test>
 </suite>

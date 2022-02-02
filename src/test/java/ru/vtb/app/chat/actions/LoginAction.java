@@ -36,12 +36,12 @@ public class LoginAction extends PageAction {
     @MobileAction(value = "Авторизоваться с помощью PIN")
     @Step("Авторизация с пин-кодом {0}")
     void authorisePin(@Parameter("Пин код") @NotNull String pinCode, @Parameter("Код подтверждения") @NotNull String otpCode) {
-        var element = DriverUtils.findNullableElement(By.id("ru.vtb.mobilebanking.android.rc:id/noneModeButton"));
-        if (element != null) {
-            element.click();
-        }
+//        var element = DriverUtils.findNullableElement(By.id("ru.vtb.mobilebanking.android.rc:id/noneModeButton"));
+//        if (element != null) {
+//            element.click();
+//        }
         setPinCode(pinCode);
-        setOtp(otpCode);
+//        setOtp(otpCode);
         switchTo("Главная ВТБ");
     }
 
@@ -55,11 +55,12 @@ public class LoginAction extends PageAction {
         }
     }
 
+
     @MobileAction(value = "Авторизоваться с помощью логина")
     @Step("Авторизация с логином {0}")
     void authoriseLogin(@Parameter("Логин") @NotNull String login, @Parameter("Пин код") @NotNull String pinCode, @Parameter("Код подтверждения") @NotNull String otpCode) {
         switchTo("ВТБ Авторизация");
-        initIdAuth();
+        // initIdAuth();
         dismissOptionalAlert();
         element("Тип авторизации").as(Select.class)
                 .select("По логину");
@@ -72,15 +73,6 @@ public class LoginAction extends PageAction {
         element("Подтвердить").as(Clickable.class)
                 .click();
         setPinCode(pinCode);
-        switchTo("Главная ВТБ");
-        try {
-        var dialog = element("Выбор в диалоге").as(Select.class);
-            if (!dialog.getOptions().isEmpty()) {
-                dialog.select("Не сейчас");
-            }
-        } catch (Throwable ignored) {
-
-        }
     }
 
     public LoginAction() {

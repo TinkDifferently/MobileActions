@@ -21,4 +21,10 @@ public class FastButtonsTest_Text extends VtbTest {
         join(openChat);
         join(sendSymbolMessage);
     }
+
+    @Override
+    public String getK3Login() {
+        return "20011354";
+    }
+
 }

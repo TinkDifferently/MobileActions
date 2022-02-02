@@ -4,7 +4,7 @@ import io.dimension.BaseTest;
 import io.dimension.actions.IAction;
 
 public abstract class VtbTest extends BaseTest implements Login {
-    private volatile static boolean isFirst = true;
+    private volatile static boolean isFirst = false;
 
     protected IAction login = () -> {
         if (isFirst) {

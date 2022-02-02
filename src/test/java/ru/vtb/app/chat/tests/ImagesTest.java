@@ -11,12 +11,12 @@ public class ImagesTest extends VtbTest {
                 .action("Открыть чат")
                 .build();
 
-        var fastButton = actions("Приложение")
+        var addImage = actions("Приложение")
                 .action("Добавить изображение")
                 .build();
 
         join(login);
         join(openChat);
-        join(fastButton);
+        join(addImage);
     }
 }

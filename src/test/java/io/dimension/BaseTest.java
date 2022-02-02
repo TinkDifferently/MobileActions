@@ -4,12 +4,15 @@ import io.dimension.actions.Action;
 import io.dimension.actions.ActionBuilder;
 import io.dimension.actions.IAction;
 import io.dimension.config.session.DriverController;
+import io.dimension.config.session.DriverUtils;
 import io.qameta.allure.Allure;
 import io.qameta.allure.AllureLifecycle;
 import org.jetbrains.annotations.NotNull;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * общий предок всех тестов, обеспечивающий  запуски исполняемых потоков и установку драйвера
@@ -38,5 +41,11 @@ public abstract class BaseTest implements UseActions{
         AllureLifecycle lifecycle= Allure.getLifecycle();
         lifecycle.updateTestCase(testResult -> testResult.setName(context.getName()));
         action.run();
+    }
+
+    @AfterTest
+    public void unmount() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(7);
+        DriverController.getInstance().unmount();
     }
 }

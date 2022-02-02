@@ -6,6 +6,7 @@ import io.dimension.config.session.parsed.DeviceInstance;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.Contract;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,6 +20,7 @@ import java.util.function.BiFunction;
 /**
  * Класс, отвечающий за выбор драйвера
  */
+@Slf4j
 public final class DriverController {
     private RemoteWebDriver driver;
     private Platform currentPlatform;
@@ -59,11 +61,20 @@ public final class DriverController {
         DesiredCapabilities capabilities = ApplicationConfig.getInstance().forDevice(applicationBind,device);
         currentPlatform=Platform.valueOf(capabilities.getCapability("platformName").toString().toUpperCase());
         capabilities.setCapability("newCommandTimeout", "6000");
-        BiFunction<URL, DesiredCapabilities, AppiumDriver> driverCreator = currentPlatform==Platform.IOS ? IOSDriver::new : AndroidDriver::new;
+        BiFunction<URL, DesiredCapabilities, AppiumDriver<?>> driverCreator = currentPlatform==Platform.IOS ? IOSDriver::new : AndroidDriver::new;
         driver=driverCreator.apply(Config.getHubUrl(), capabilities);
         driver.manage().timeouts()
                 .implicitlyWait(Config.getGlobalTimeout(), TimeUnit.SECONDS);
         return driver;
+    }
+
+    public void unmount(){
+        try{
+            driver.quit();
+        } catch (Exception any){
+            any.printStackTrace();
+        }
+        driver=null;
     }
 
 }

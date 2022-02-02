@@ -18,4 +18,14 @@ public class FastButtonsTest_Any extends VtbTest {
         join(openChat);
         join(fastButton);
     }
+
+    @Override
+    public String getK3Login() {
+        return "20060643";
+    }
+
+    @Override
+    public String getK4Login() {
+        return null;
+    }
 }

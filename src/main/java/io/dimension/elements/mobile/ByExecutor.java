@@ -30,17 +30,21 @@ public final class ByExecutor {
         this.found = element;
     }
 
-    private WebElement getElement() {
+    private WebElement getElement(int timeout) {
         if (isLocated) {
             if (locator == null) {
                 CustomLogger.fail("Пустой локатор");
             }
-            found = DriverUtils.findNullableElement(locator);
+            found = timeout==-1? DriverUtils.findNullableElement(locator) :DriverUtils.waitFor(timeout,driver->driver.findElement(locator));
         }
         if (found==null){
             throw new AssertionError(String.format("Не удалось найти элемент '%s'", title));
         }
         return found;
+    }
+
+    private WebElement getElement(){
+        return getElement(-1);
     }
 
     boolean isEmpty() {
@@ -73,6 +77,10 @@ public final class ByExecutor {
 
     public WebElement getInitialElement() {
         return getElement();
+    }
+
+    public WebElement getInitialElement(int timeout) {
+        return getElement(timeout);
     }
 
     public Point getLocation() {

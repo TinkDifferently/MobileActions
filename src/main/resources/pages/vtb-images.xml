@@ -1,6 +1,6 @@
 <page>
     <bind>Изображения</bind>
-    <name>Images</name>
+    <name>ImagePage</name>
     <elements>
         <element androidPath="com.sec.android.app.camera:id/normal_center_button"
                  androidStrategy="id"

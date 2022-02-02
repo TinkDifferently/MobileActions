@@ -20,4 +20,10 @@ public class FastButtonsTest_Hi extends VtbTest {
         join(openChat);
         join(fastButton);
     }
+
+    @Override
+    public String getK3Login() {
+        return "20002750";
+    }
+
 }

@@ -4,8 +4,6 @@
             <common>
                 <capability platformName="iOS"/>
                 <capability automationName="XCUITest"/>
-                <capability useNewWDA="true"/>
-                <capability noReset="false"/>
             </common>
             <real>
                 <capability xcodeOrgId="84LG99WF4T"/>
@@ -28,8 +26,8 @@
             <bind>IOS_SINGLE_DEVICE</bind>
             <type>ios real</type>
             <capabilities>
-                <capability deviceName="iPhone (Romab)"/>
-                <capability udid="auto"/>
+                <capability deviceName="iPhone (Test)"/>
+                <capability udid="00008020-00036DE40A29402E"/>
             </capabilities>
         </instance>
         <instance>

@@ -24,4 +24,9 @@ public class Input extends AbstractMobileElement implements HasText, Editable {
     public void setText(String text) {
         $().sendKeys(text);
     }
+
+    @Override
+    public void clear() {
+        $().getInitialElement().clear();
+    }
 }

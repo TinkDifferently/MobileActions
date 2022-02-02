@@ -3,12 +3,13 @@
     <name>VtbAuth</name>
     <elements>
         <element androidPath="//*[@resource-id='ru.vtb.mobilebanking.android.rc:id/confirm_by_pass_code_keyboard' or @resource-id='ru.vtb.mobilebanking.android.rc:id/create_pass_code_keyboard']"
-                 iosPath=""
+                 iosPath="//*[./*/XCUIElementTypeButton[@name='1']]"
+                 iosStrategy="xpath"
                  type="PinCodeController"
                  bind="Пин-код" name=""/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/confirm_code_edit_text"
                  androidStrategy="id"
-                 iosPath=""
+                 iosPath="**/XCUIElementTypeTextField[`value == 'Код'`]"
                  type="Input"
                  bind="Отп" name="Otp"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/loginVariantButton"
@@ -18,22 +19,23 @@
                  bind="Статус клиента" name="ClientStatus"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/tabs"
                  androidStrategy="id"
-                 iosPath=""
+                 iosStrategy="xpath"
+                 iosPath="//XCUIElementTypeOther[./XCUIElementTypeOther/XCUIElementTypeButton]"
                  type="Select"
                  bind="Тип авторизации" name="AuthorisationType"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/login"
                  androidStrategy="id"
-                 iosPath=""
+                 iosPath="**/XCUIElementTypeTextField"
                  type="Input"
                  bind="Идентификатор клиента" name="ClientId"/>
         <element
                 androidPath="//*[@resource-id='ru.vtb.mobilebanking.android.rc:id/loginAndHelpButtons']/*[@resource-id='ru.vtb.mobilebanking.android.rc:id/primaryButton']"
-                iosPath=""
+                iosPath="**/XCUIElementTypeButton[`name='Продолжить'`]"
                 type="Button"
                 bind="Продолжить" name="Continue"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/create_pass_code_continue_button"
                  androidStrategy="id"
-                 iosPath=""
+                 iosPath="**/XCUIElementTypeButton[`name='Продолжить'`]"
                  type="Button"
                  bind="Подтвердить" name="Submit"/>
     </elements>

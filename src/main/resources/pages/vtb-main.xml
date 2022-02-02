@@ -4,47 +4,115 @@
     <elements>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/buttonPanel"
                  androidStrategy="id"
-                 iosPath=""
+                 iosPath="**/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]"
                  type="Select"
                  bind="Выбор в диалоге" name="dialogOptions"/>
-        <element androidPath="ru.vtb.mobilebanking.android.rc:id/airBar"
-                 androidStrategy="id"
-                 iosPath=""
-                 type="Select"
-                 bind="Навигация" name="Navigation"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/message_body"
                  androidStrategy="id"
-                 iosPath=""
+                 iosPath="**/XCUIElementTypeTextView[`label == 'Ваше сообщение'`]"
                  type="Input"
                  bind="Сообщение для отправки" name="MessageBody"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/send_message"
                  androidStrategy="id"
-                 iosPath=""
+                 iosPath="**/XCUIElementTypeButton[`label == 'Отправить'`]"
                  type="Button"
                  bind="Отправить сообщение" name="SendMessage"/>
-        <element androidPath="ru.vtb.mobilebanking.android.rc:id/fastAccessRecyclerView"
-                 androidStrategy="id"
-                 iosPath=""
-                 type="Select"
-                 bind="Быстрые кнопки" name="FastButtons"/>
         <element androidPath="//android.widget.ImageButton[@content-desc='Назад']"
                  iosPath=""
                  type="Button"
                  bind="Назад" name="Back"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/add_photo"
                  androidStrategy="id"
-                 iosPath=""
+                 iosPath="**/XCUIElementTypeButton[`label == 'Прикрепить фото'`]"
                  type="Button"
                  bind="Добавить изображение" name="AddImage"/>
+        <element iosPath="**/XCUIElementTypeCollectionView"
+                 type="Select"
+                 bind="Источник изображения" name="ImageSource"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/faceliftImagesList"
                  androidStrategy="id"
-                 iosPath=""
-                 type="Select"
+                 iosPath="**/XCUIElementTypeScrollView[-1]"
+                 type="Images"
                  bind="Изображения" name="Images"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/faceliftGalleryBtn"
                  androidStrategy="id"
                  iosPath=""
                  type="Button"
                  bind="Галерея" name="Galery"/>
+        <element androidPath=""
+                 androidStrategy="id"
+                 iosPath="**/XCUIElementTypeButton[`label == 'Поиск'`]"
+                 type="Button"
+                 bind="Поиск" name="Search"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeSearchField"
+                 type="Input"
+                 bind="Строка поиска" name="Search"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeButton[`name == 'В конец истории'`]"
+                 type="Button"
+                 bind="В конец истории" name="Update"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeButton[`name == 'Следующий результат'`]"
+                 type="Button"
+                 bind="Следующий результат" name="NextResult"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeButton[`name == 'Предыдущий результат'`]"
+                 type="Button"
+                 bind="Предыдущий результат" name="PrevResult"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeButton[`name == 'Отмена'`]"
+                 type="Button"
+                 bind="Отменить поиск" name="CancelSearch"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/airBar"
+                 androidStrategy="id"
+                 iosPath="**/XCUIElementTypeButton[\$type=='XCUIElementTypeButton' AND name='Чат'\$]"
+                 type="NavigationMenu"
+                 bind="Навигация" name="Navigation"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/fastAccessRecyclerView"
+                 androidStrategy="id"
+                 iosPath="**/XCUIElementTypeScrollView/XCUIElementTypeOther[\$type=='XCUIElementTypeButton'\$]"
+                 type="Select"
+                 bind="Быстрые кнопки" name="FastButtons"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/fastAccessRecyclerView"
+                 androidStrategy="id"
+                 iosPath="**/XCUIElementTypeTable/**/XCUIElementTypeCell[\$type == 'XCUIElementTypeButton'\$]"
+                 type="Select"
+                 bind="Быстрые ответы" name="FastReplies"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeCell[\$name=='Пожалуйста, оцените мою работу'\$]"
+                 type="Select"
+                 bind="Оценить работу оператора" name="RateIt"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeButton[`label == 'Отправить оценку'`]"
+                 type="Button"
+                 bind="Отправить оценку" name="SendRate"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeCell[\$name=='Да'\$][\$name=='Нет'\$]"
+                 type="Select"
+                 bind="Оставить комментарий" name="Comment"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeScrollView/*/*/XCUIElementTypeOther[\$name=='Что вам понравилось?'\$]"
+                 type="Select"
+                 bind="Что вам понравилось?" name="WhatDidYouLike"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeScrollView/*/*/XCUIElementTypeOther[\$name=='Что вам не понравилось?'\$]"
+                 type="Select"
+                 bind="Что вам не понравилось?" name="WhatDidYouDisike"/>
+        <element androidPath=""
+                 androidStrategy="id"
+                 iosPath="Комментарий"
+                 iosStrategy="AccessibilityId"
+                 type="Input"
+                 bind="Комментарий" name="CommentBody"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeOther"
+                 type="Select"
+                 bind="Меню сообщения" name="MessageOptions"/>
+        <element androidPath=""
+                 iosPath="**/XCUIElementTypeTable"
+                 type="Messages"
+                 bind="Сообщения" name="Сообщения"/>
+
     </elements>
 </page>

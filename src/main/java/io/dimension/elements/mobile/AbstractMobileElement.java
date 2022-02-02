@@ -1,6 +1,7 @@
 package io.dimension.elements.mobile;
 
 import io.dimension.elements.base.BaseElement;
+import io.dimension.elements.base.interfaces.Waitable;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -13,7 +14,7 @@ import java.util.Objects;
 /**
  * Абстрактный класс для кастомных элементов.
  */
-public abstract class AbstractMobileElement extends BaseElement {
+public abstract class AbstractMobileElement extends BaseElement implements Waitable {
     @Override
     public String getTagName() {
         return byExecutor.isEmpty() ? "" : byExecutor.getTagName();
@@ -130,5 +131,10 @@ public abstract class AbstractMobileElement extends BaseElement {
             return false;
         AbstractMobileElement e = (AbstractMobileElement) o;
         return Objects.equals(e.$(), $());
+    }
+
+    @Override
+    public void waitFor(int timeout) {
+        $().getInitialElement(timeout);
     }
 }
