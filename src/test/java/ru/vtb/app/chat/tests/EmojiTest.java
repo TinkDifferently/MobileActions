@@ -1,8 +1,9 @@
 package ru.vtb.app.chat.tests;
 
+import io.dimension.DisplayName;
 import ru.vtb.app.chat.tests.pack.VtbTest;
 
-
+@DisplayName("Проверка отправки смайлов")
 public class EmojiTest extends VtbTest {
 
     public void mount() {

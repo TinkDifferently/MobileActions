@@ -8,6 +8,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.dimension.actions.PageAction;
 import io.dimension.actions.annotations.ActionProvider;
 import io.dimension.actions.annotations.MobileAction;
+import io.dimension.actions.annotations.Parameter;
 import io.dimension.config.session.DriverController;
 import io.dimension.elements.base.interfaces.Clickable;
 import io.dimension.elements.base.interfaces.Select;
@@ -50,14 +51,27 @@ public class DeviceAction extends PageAction {
         driver.runAppInBackground(Duration.ofSeconds(10));
     }
 
+    @MobileAction(value = "Скрыть клавиатуру")
+    @Step("Скрыта клавиатура")
+    void hideKeyboard() {
+        AppiumDriver<?> driver= (AppiumDriver<?>) DriverController.getInstance().getDriver();
+        driver.hideKeyboard();
+    }
+
     @MobileAction(value = "Сделать фотографию")
     @Step("Фотографирование")
-    void makePhoto() {
+    void makePhoto(@Parameter("Повтор") boolean retry) {
         switchTo("Изображения");
         element("Сфотографировать").as(Clickable.class)
                 .click();
+        if (retry) {
+            element("Подтвердить").as(Select.class)
+                    .select("Повтор");
+            element("Сфотографировать").as(Clickable.class)
+                    .click();
+        }
         element("Подтвердить").as(Select.class)
-                .select("Ок");
+                .select("ОК");
         switchBack();
     }
 

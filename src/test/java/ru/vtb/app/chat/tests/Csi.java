@@ -1,5 +1,7 @@
 package ru.vtb.app.chat.tests;
 
+import io.dimension.config.session.DriverController;
+import org.openqa.selenium.Platform;
 import ru.vtb.app.chat.tests.pack.VtbTest;
 
 public class Csi extends VtbTest {
@@ -19,8 +21,12 @@ public class Csi extends VtbTest {
                 .action("Отправить сообщение")
                 .build();
 
+        String ev= DriverController.getInstance().getCurrentPlatform().is(Platform.ANDROID)
+                ? "Оценка: 5"
+                : "5 звезд ";
+
         var rate = actions("Оценки")
-                .data("Оценка", "5 звезд ")
+                .data("Оценка", ev)
                 .action("Оценить работу оператора")
                 .build();
 

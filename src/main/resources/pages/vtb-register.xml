@@ -1,0 +1,32 @@
+<page>
+    <bind>ВТБ Регистрация</bind>
+    <name>VtbRegister</name>
+    <elements>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/surnameTextInputEditText"
+                 androidStrategy="id"
+                 type="ContainedInput"
+                 bind="Фамилия" name="FirstName"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/nameTextInputEditText"
+                 androidStrategy="id"
+                 type="ContainedInput"
+                 bind="Имя" name="Surname"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/patronymicTextInputEditText"
+                 androidStrategy="id"
+                 type="ContainedInput"
+                 bind="Отчество" name="Patronymic"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/birthdayTextInputLayout"
+                 androidStrategy="id"
+                 type="ContainedInput"
+                 bind="Дата рождения" name="BirthDate"/>
+        <element androidPath="//*[@resource-id='ru.vtb.mobilebanking.android.rc:id/vtbButtonsRulesConditions']/*/android.widget.CheckBox"
+                 type="CheckBox"
+                 bind="Согласие с правилами и тарифами" name="RulesConditions"/>
+        <element androidPath="//*[@resource-id='ru.vtb.mobilebanking.android.rc:id/vtbButtonsRulesProcessing']/*/android.widget.CheckBox"
+                 type="CheckBox"
+                 bind="Согласие на обработку персональных данных" name="RulesProcessing"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/acceptButton"
+                 androidStrategy="id"
+                 type="Button"
+                 bind="Продолжить" name="Accept"/>
+    </elements>
+</page>

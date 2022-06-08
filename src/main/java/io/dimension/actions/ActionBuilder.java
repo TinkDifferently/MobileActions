@@ -2,6 +2,7 @@ package io.dimension.actions;
 
 import io.dimension.actions.annotations.*;
 import io.dimension.config.session.DriverController;
+import io.dimension.data.IDataSource;
 import io.dimension.exceptions.NoSuchActionException;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -19,6 +20,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public final class ActionBuilder {
 
@@ -55,8 +57,15 @@ public final class ActionBuilder {
     @NotNull
     @Contract(pure = true)
     public static ActionBuilder type(@NotNull String actionGroupName) {
+        Class<? extends IAction> clazz = providers.get(actionGroupName);
+        return type(clazz);
+    }
+
+    @NotNull
+    @Contract(pure = true)
+    public static ActionBuilder type(@NotNull Class<? extends IAction> actionGroup) {
         var result = pInstance.get();
-        result.actionClass = providers.get(actionGroupName);
+        result.actionClass = actionGroup;
         return result;
     }
 
@@ -65,6 +74,17 @@ public final class ActionBuilder {
         int index = key.lastIndexOf('#');
         data.add(new ImmutablePair<>(index == -1 ? key : key.substring(0, index), value));
         return this;
+    }
+
+    @Contract("_, _ -> this")
+    public ActionBuilder dataSource(@NotNull IDataSource source, @NotNull String[] values) {
+        Arrays.stream(values).map(String::trim).forEach(value -> data(value, source.getData(value)));
+        return this;
+    }
+
+    @Contract("_, _ -> this")
+    public ActionBuilder dataSource(@NotNull IDataSource source, @NotNull String values) {
+        return dataSource(source, values.split(","));
     }
 
     private @Nullable Method findAction(IAction instance, String actionName) {
@@ -101,11 +121,13 @@ public final class ActionBuilder {
     private <T> T reduce(String key) {
         var pair = data.stream().filter(o -> o.getKey().equals(key)).findFirst()
                 .orElseThrow(() -> new RuntimeException(String.format("Data for key '%s' was not supplied", key)));
+        System.out.println(pair);
         data.remove(pair);
         return (T) pair.getValue();
     }
 
     private void executeAction(IAction instance, String actionName) {
+        System.out.println("Выполняю ["+actionName+"]");
         var method = findAction(instance, actionName);
         if (method == null) {
             return;

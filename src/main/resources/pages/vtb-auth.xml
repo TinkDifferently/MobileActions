@@ -38,5 +38,13 @@
                  iosPath="**/XCUIElementTypeButton[`name='Продолжить'`]"
                  type="Button"
                  bind="Подтвердить" name="Submit"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/phoneTextInputEditText"
+                 androidStrategy="id"
+                 type="Input"
+                 bind="Номер телефона" name="TelephoneNumber"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/proceedButton"
+                 androidStrategy="id"
+                 type="Button"
+                 bind="Зарегистрироваться" name="Register"/>
     </elements>
 </page>

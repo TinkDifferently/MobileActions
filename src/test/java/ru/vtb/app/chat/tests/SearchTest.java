@@ -20,7 +20,7 @@ public class SearchTest extends VtbTest {
                 .build();
 
         var searchSymbols = actions("Приложение")
-                .data("Фрагмент", "*4217")
+                .data("Фрагмент", "*8470")
                 .action("Найти сообщение")
                 .build();
 
@@ -38,7 +38,7 @@ public class SearchTest extends VtbTest {
                 .build();
 
         var sendHello = actions("Приложение")
-                .data("Сообщение", "Reply with 3 messages")
+                .data("Сообщение", "script:[Reply with 3 messages]")
                 .action("Отправить сообщение")
                 .build();
 

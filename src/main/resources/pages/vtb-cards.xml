@@ -2,8 +2,9 @@
     <bind>Карты</bind>
     <name>CardsPage</name>
     <elements>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/rvProductsFilter"
                  iosPath="**/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView"
+                 androidStrategy="id"
                  type="Cards"
                  bind="Список карт" name=""/>
         <element androidPath="//*[@resource-id='ru.vtb.mobilebanking.android.rc:id/confirm_by_pass_code_keyboard' or @resource-id='ru.vtb.mobilebanking.android.rc:id/create_pass_code_keyboard']"
@@ -14,17 +15,23 @@
                  iosStrategy="xpath"
                  type="PinCodeController"
                  bind="Подтвердить пин-код" name=""/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/pin_set_button"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`label='Установить'`]"
                  type="Button"
                  bind="Установить" name=""/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/pin_text_facelift"
+                 androidStrategy="id"
                  iosPath="**/*[`value='ПИН-код'`]"
-                 type="Button"
+                 type="Input"
                  bind="Пин-код" name="PinCode"/>
         <element androidPath=""
                  iosPath="**/XCUIElementTypeButton[`label == 'Готово'`]"
                  type="Button"
                  bind="Готово" name="Ready"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/sms_code"
+                 androidStrategy="id"
+                 type="Input"
+                 bind="СМС-код" name="Sms"/>
     </elements>
 </page>

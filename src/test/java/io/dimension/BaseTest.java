@@ -7,22 +7,26 @@ import io.dimension.config.session.DriverController;
 import io.dimension.config.session.DriverUtils;
 import io.qameta.allure.Allure;
 import io.qameta.allure.AllureLifecycle;
+import io.qameta.allure.Attachment;
 import org.jetbrains.annotations.NotNull;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
  * общий предок всех тестов, обеспечивающий  запуски исполняемых потоков и установку драйвера
  */
-public abstract class BaseTest implements UseActions{
+public abstract class BaseTest implements UseActions {
     private IAction action;
 
-    @BeforeTest
+    @BeforeClass
     @Parameters({"device", "app"})
-    public final void mount(@NotNull String device, @NotNull String app){
+    public final void mount(@NotNull String device, @NotNull String app) {
         DriverController.getInstance().createDriver(app, device);
         action = new Action();
         mount();
@@ -36,16 +40,35 @@ public abstract class BaseTest implements UseActions{
         return this;
     }
 
-    @Test
-    public final void test(ITestContext context) {
-        AllureLifecycle lifecycle= Allure.getLifecycle();
-        lifecycle.updateTestCase(testResult -> testResult.setName(context.getName()));
-        action.run();
+    @Attachment(value = "Attachment Screenshot", type = "image/png")
+    public byte[] makeScreenshot() {
+        return ((TakesScreenshot) DriverController.getInstance().getDriver())
+                .getScreenshotAs(OutputType.BYTES);
     }
 
-    @AfterTest
-    public void unmount() throws InterruptedException {
+    @Test
+    public final void test(ITestContext context) {
+        AllureLifecycle lifecycle = Allure.getLifecycle();
+        Allure.epic(context.getName());
+        Optional.ofNullable(this.getClass().getAnnotation(DisplayName.class))
+                .ifPresent(o -> lifecycle.updateTestCase(testResult -> testResult.setName(o.value())));
+        try {
+            action.run();
+        } catch (Exception any){
+            try {
+                makeScreenshot();
+            } catch (Exception ignored){
+                System.out.println("Could not make screenshot");
+            }
+            throw any;
+        }
+    }
+
+
+    @AfterClass
+    public void unmount(ITestContext context) throws InterruptedException {
         TimeUnit.SECONDS.sleep(7);
+
         DriverController.getInstance().unmount();
     }
 }

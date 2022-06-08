@@ -13,6 +13,7 @@
         </platform>
         <platform type="Android">
             <common>
+                <capability skipServerInstallation="true"/>
                 <capability platformName="Android"/>
                 <capability fullReset="true"/>
                 <capability automationName="UIAutomator2"/>

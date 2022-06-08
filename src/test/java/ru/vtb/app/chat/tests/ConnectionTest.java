@@ -1,7 +1,5 @@
 package ru.vtb.app.chat.tests;
 
-import io.dimension.BaseTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Ignore;
 import ru.vtb.app.chat.tests.pack.VtbTest;
 

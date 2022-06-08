@@ -25,42 +25,50 @@
                  androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`label == 'Прикрепить фото'`]"
                  type="Button"
-                 bind="Добавить изображение" name="AddImage"/>
+                 bind="Добавить вложение" name="AddImage"/>
         <element iosPath="**/XCUIElementTypeCollectionView"
                  type="Select"
                  bind="Источник изображения" name="ImageSource"/>
-        <element androidPath="ru.vtb.mobilebanking.android.rc:id/faceliftImagesList"
-                 androidStrategy="id"
+        <element androidPath="//*[@resource-id='ru.vtb.mobilebanking.android.rc:id/parentPanel']"
                  iosPath="**/XCUIElementTypeScrollView[-1]"
-                 type="Images"
-                 bind="Изображения" name="Images"/>
+                 type="Select"
+                 bind="Источник вложения" name="Images"/>
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/photoPreview"
+                 androidStrategy="id"
+                 type="Button"
+                 bind="Сделать фото" name="MakePhoto"/>
         <element androidPath="ru.vtb.mobilebanking.android.rc:id/faceliftGalleryBtn"
                  androidStrategy="id"
                  iosPath=""
                  type="Button"
                  bind="Галерея" name="Galery"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/menuSearch"
                  androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`label == 'Поиск'`]"
                  type="Button"
                  bind="Поиск" name="Search"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/edit_search"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeSearchField"
                  type="Input"
                  bind="Строка поиска" name="Search"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/scrollToBottomButton"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`name == 'В конец истории'`]"
                  type="Button"
                  bind="В конец истории" name="Update"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/prevSearchedMessageButton"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`name == 'Следующий результат'`]"
                  type="Button"
                  bind="Следующий результат" name="NextResult"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/nextSearchedMessageButton"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`name == 'Предыдущий результат'`]"
                  type="Button"
                  bind="Предыдущий результат" name="PrevResult"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/messageSearchCancelButton"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`name == 'Отмена'`]"
                  type="Button"
                  bind="Отменить поиск" name="CancelSearch"/>
@@ -74,16 +82,18 @@
                  iosPath="**/XCUIElementTypeScrollView/XCUIElementTypeOther[\$type=='XCUIElementTypeButton'\$]"
                  type="Select"
                  bind="Быстрые кнопки" name="FastButtons"/>
-        <element androidPath="ru.vtb.mobilebanking.android.rc:id/fastAccessRecyclerView"
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/messages"
                  androidStrategy="id"
                  iosPath="**/XCUIElementTypeTable/**/XCUIElementTypeCell[\$type == 'XCUIElementTypeButton'\$]"
                  type="Select"
                  bind="Быстрые ответы" name="FastReplies"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/rating"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeCell[\$name=='Пожалуйста, оцените мою работу'\$]"
-                 type="Select"
+                 type="ContentSelect"
                  bind="Оценить работу оператора" name="RateIt"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/vSendComment"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeButton[`label == 'Отправить оценку'`]"
                  type="Button"
                  bind="Отправить оценку" name="SendRate"/>
@@ -99,20 +109,24 @@
                  iosPath="**/XCUIElementTypeScrollView/*/*/XCUIElementTypeOther[\$name=='Что вам не понравилось?'\$]"
                  type="Select"
                  bind="Что вам не понравилось?" name="WhatDidYouDisike"/>
-        <element androidPath=""
-                 androidStrategy="id"
+        <element androidPath="//android.widget.EditText[@text='Комментарий']"
                  iosPath="Комментарий"
                  iosStrategy="AccessibilityId"
                  type="Input"
                  bind="Комментарий" name="CommentBody"/>
-        <element androidPath=""
+        <element androidPath="//android.widget.ScrollView//android.widget.GridLayout"
                  iosPath="**/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeOther"
                  type="Select"
                  bind="Меню сообщения" name="MessageOptions"/>
-        <element androidPath=""
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/messages"
+                 androidStrategy="id"
                  iosPath="**/XCUIElementTypeTable"
                  type="Messages"
                  bind="Сообщения" name="Сообщения"/>
-
+        <element androidPath="ru.vtb.mobilebanking.android.rc:id/btnDelete"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Button"
+                 bind="Удалить изображение" name="DeleteImage"/>
     </elements>
 </page>

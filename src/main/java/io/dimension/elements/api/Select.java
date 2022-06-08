@@ -25,6 +25,6 @@ public class Select extends AbstractMobileElement implements io.dimension.elemen
             return Collections.emptySet();
         }
         return $.findElements(By.xpath(".//*")).stream().map(Selectable::new)
-                .collect(Collectors.toUnmodifiableSet());
+                .collect(Collectors.toUnmodifiableList());
     }
 }

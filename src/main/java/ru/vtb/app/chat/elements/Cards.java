@@ -5,6 +5,7 @@ import io.dimension.elements.api.Button;
 import io.dimension.elements.base.interfaces.Select;
 import io.dimension.elements.base.interfaces.SelectableItem;
 import io.dimension.elements.mobile.AbstractMobileElement;
+import io.dimension.utils.PlatformByBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
@@ -23,7 +24,11 @@ public class Cards extends AbstractMobileElement implements Select<Cards.Item> {
 
     @Override
     public Collection<Item> getOptions() {
-        return $().getInitialElement().findElements(By.xpath("./XCUIElementTypeCell")).stream()
+        By by= PlatformByBuilder.create()
+                .iOS(By.xpath("./XCUIElementTypeCell"))
+                .android(By.id("ru.vtb.mobilebanking.android.rc:id/product_field"))
+                .build();
+        return $().getInitialElement().findElements(by).stream()
                 .map(Item::new).collect(Collectors.toList());
     }
 
@@ -34,9 +39,11 @@ public class Cards extends AbstractMobileElement implements Select<Cards.Item> {
 
         @Override
         public String getTitle() {
-            return DriverController.getInstance().getCurrentPlatform() == Platform.IOS
-                    ? $().getInitialElement().findElement(By.xpath(".//XCUIElementTypeStaticText[@index=1]")).getText()
-                    : super.getTitle();
+            var by=PlatformByBuilder.create()
+                    .iOS(By.xpath(".//XCUIElementTypeStaticText[@index=1]"))
+                    .android(By.id("ru.vtb.mobilebanking.android.rc:id/elementName"))
+                    .build();
+            return DriverController.getInstance().getDriver().findElement(by).getText();
         }
     }
 }

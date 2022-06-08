@@ -1,5 +1,8 @@
 package ru.vtb.app.chat.tests;
 
+import io.dimension.actions.IAction;
+import io.dimension.config.session.DriverController;
+import org.openqa.selenium.Platform;
 import ru.vtb.app.chat.tests.pack.VtbTest;
 
 public class PinCodeTest extends VtbTest {
@@ -10,15 +13,19 @@ public class PinCodeTest extends VtbTest {
                 .build();
 
 
-        var orderCard = actions("Приложение")
+        var requestPin = actions("Приложение")
                 .data("Сообщение", "Хочу сменить пин код")
                 .action("Отправить сообщение")
                 .build();
 
-        var debetCard = actions("Приложение")
+
+        IAction accept = DriverController.getInstance().getCurrentPlatform().is(Platform.IOS)
+                ? actions("Приложение")
                 .data("Быстрая кнопка", "Выбрать")
                 .action("Нажать на быструю кнопку")
-                .build();
+                .build()
+                : (() -> {
+        });
 
         var selectAnyCard = actions("Приложение")
                 .action("Выбрать произвольную карту")
@@ -33,19 +40,12 @@ public class PinCodeTest extends VtbTest {
                 .build();
 
 
-
-
         join(login);
         join(openChat);
-        join(orderCard);
-        join(debetCard);
+        join(requestPin);
+        join(accept);
         join(selectAnyCard);
         join(setNewPin);
         join(cancel);
-    }
-
-    @Override
-    public String getK3Login() {
-        return "20002750";
     }
 }

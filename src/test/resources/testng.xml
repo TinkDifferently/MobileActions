@@ -1,77 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Vtb suite">
-    <parameter name="device" value="IOS_SINGLE_DEVICE"/>
+    <parameter name="device" value="ANDROID_SINGLE_DEVICE"/>
     <parameter name="app" value="vtb-mobile-app"/>
-    <parameter name="clientName" value="2060643"></parameter>
-    <!--    <test name="Отображение статусов" verbose="1">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.Statuses"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Оценки" verbose="1">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.Csi"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Эмоджи" verbose="1">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.EmojiTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Соединение">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.ConnectionTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Поддержка текста">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.TextSupport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Восстановление истории после сворачивания приложенияы">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.BackgroundTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Поддержка изображений">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.ImagesTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Цитирование">-->
-    <!--        <classes>-->
-    <!--            <class name="ru.vtb.app.chat.tests.QuotationTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-<!--    <test name="Быстрые кнопки (Привет)">-->
-<!--        <classes>-->
-<!--            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Hi"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Быстрые кнопки (Любая)">-->
-<!--        <classes>-->
-<!--            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Any"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Быстрые кнопки (Исчезающие кнопки)">-->
-<!--        <classes>-->
-<!--            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Text"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Поиск">-->
-<!--        <classes>-->
-<!--            <class name="ru.vtb.app.chat.tests.SearchTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Заказ цифровой карты">-->
-<!--        <classes>-->
-<!--            <class name="ru.vtb.app.chat.tests.CardOrderTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-    <test name="Смена пин-кода">
+    <parameter name="isFirst" value="false"/>
+    <parameter name="contour" value="k4"/>
+    <parameter name="otpCode" value="000000"/>
+    <parameter name="pinCode" value="1570"/>
+    <listeners>
+        <listener class-name="io.dimension.BaseListener"/>
+    </listeners>
+    <test name="Легкий банк" enabled="false">
+        <parameter name="authStyle" value="Легкий банк"/>
+        <parameter name="clientType" value=""/>
         <classes>
-            <class name="ru.vtb.app.chat.tests.PinCodeTest"/>
+            <class name="ru.vtb.app.chat.tests.light.LightClientCopy"/>
+            <class name="ru.vtb.app.chat.tests.light.LightClientCsi"/>
+            <class name="ru.vtb.app.chat.tests.light.LightClientText_Keyboard"/>
+            <class name="ru.vtb.app.chat.tests.light.LightClientText_Text"/>
+            <class name="ru.vtb.app.chat.tests.light.LightClientText_Images"/>
+            <class name="ru.vtb.app.chat.tests.light.LightClientText_Photo"/>
+            <class name="ru.vtb.app.chat.tests.light.LightClientText_Gallery"/>
+            <class name="ru.vtb.app.chat.tests.light.Buttons_AlwaysOnDisplay"/>
+            <class name="ru.vtb.app.chat.tests.light.Buttons_Emoji"/>
+            <class name="ru.vtb.app.chat.tests.light.Buttons_Cursive"/>
+            <class name="ru.vtb.app.chat.tests.light.Buttons_SpecialSymbols"/>
+            <class name="ru.vtb.app.chat.tests.light.Buttons_ManyManyButtons"/>
         </classes>
     </test>
+    <test name="Мультизагрузка" enabled="false">
+        <parameter name="authStyle" value="Авторизованная зона"/>
+        <parameter name="clientType" value=""/>
+        <classes>
+            <class name="ru.vtb.app.chat.tests.MultiLoadTest_MaximumFiles"/>
+            <class name="ru.vtb.app.chat.tests.MultiLoadTest_AddingFiles"/>
+            <class name="ru.vtb.app.chat.tests.MultiLoadTest_IncorrectFiles"/>
+            <class name="ru.vtb.app.chat.tests.MultiLoadTest_TooMuchFiles"/>
+        </classes>
+    </test>
+    <test name="Debug">
+        <parameter name="authStyle" value="Авторизованная зона"/>
+        <parameter name="clientType" value=""/>
+        <classes>
+            <class name="ru.vtb.app.chat.tests.EmojiTest"/>
+            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Hi"/>
+        </classes>
+    </test>
+    <test name="Авторизованная зона" enabled="false">
+        <parameter name="authStyle" value="Авторизованная зона"/>
+        <parameter name="clientType" value=""/>
+        <classes>
+            <class name="ru.vtb.app.chat.tests.Statuses"/>
+            <class name="ru.vtb.app.chat.tests.Statuses"/>
+            <!--            <class name="ru.vtb.app.chat.tests.Csi"/>-->
+            <class name="ru.vtb.app.chat.tests.EmojiTest"/>
+            <class name="ru.vtb.app.chat.tests.ConnectionTest"/>
+            <class name="ru.vtb.app.chat.tests.TextSupport"/>
+            <class name="ru.vtb.app.chat.tests.BackgroundTest"/>
+            <class name="ru.vtb.app.chat.tests.ImagesTest"/>
+            <class name="ru.vtb.app.chat.tests.QuotationTest"/>
+            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Hi"/>
+            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Text"/>
+            <class name="ru.vtb.app.chat.tests.SearchTest"/>
+            <class name="ru.vtb.app.chat.tests.FastButtonsTest_Any"/>
+        </classes>
+    </test>
+
+    <!--        <test name="Эмоджи" verbose="1">-->
+    <!--            <classes>-->
+    <!--                -->
+    <!--            </classes>-->
+    <!--        </test>-->
+    <!--        <test name="Соединение">-->
+    <!--            <classes>-->
+    <!--                -->
+    <!--            </classes>-->
+    <!--        </test>-->
+    <!--        <test name="Поддержка текста">-->
+    <!--            <classes>-->
+    <!--                -->
+    <!--            </classes>-->
+    <!--        </test>-->
+    <!--    <test name="Восстановление истории после сворачивания приложения">-->
+    <!--        <classes>-->
+    <!--            -->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--        <test name="Поддержка изображений">-->
+    <!--            <classes>-->
+    <!--                -->
+    <!--            </classes>-->
+    <!--        </test>-->
+    <!--        <test name="Цитирование">-->
+    <!--            <classes>-->
+    <!--                -->
+    <!--            </classes>-->
+    <!--        </test>-->
+    <!--    <test name="Быстрые кнопки (Привет)">-->
+    <!--        <classes>-->
+    <!--            -->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Быстрые кнопки (Любая)">-->
+    <!--        <classes>-->
+    <!--            -->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Быстрые кнопки (Исчезающие кнопки)">-->
+    <!--        <classes>-->
+    <!--            -->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Поиск">-->
+    <!--        <classes>-->
+    <!--            -->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Заказ цифровой карты">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.CardOrderTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Смена пин-кода">-->
+    <!--        <classes>-->
+    <!--            <class name="ru.vtb.app.chat.tests.PinCodeTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 </suite>

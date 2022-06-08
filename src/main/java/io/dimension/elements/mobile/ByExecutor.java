@@ -17,14 +17,14 @@ public final class ByExecutor {
     private final String title;
 
     @Contract(pure = true)
-    ByExecutor(By by, String title) {
+    public ByExecutor(By by, String title) {
         this.locator = by;
         this.title = title;
         isLocated = true;
     }
 
     @Contract(pure = true)
-    ByExecutor(WebElement element, String title) {
+    public ByExecutor(WebElement element, String title) {
         this.title = title;
         isLocated = false;
         this.found = element;

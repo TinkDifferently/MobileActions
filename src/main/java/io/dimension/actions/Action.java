@@ -35,4 +35,9 @@ public class Action implements IAction {
     public ActionBuilder dispatch(String functionalName) {
         return ActionBuilder.type(functionalName);
     }
+
+    @NotNull
+    public ActionBuilder dispatch() {
+        return ActionBuilder.type(this.getClass());
+    }
 }

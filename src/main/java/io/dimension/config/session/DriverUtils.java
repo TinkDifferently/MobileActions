@@ -1,5 +1,7 @@
 package io.dimension.config.session;
 
+import io.appium.java_client.MobileDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.dimension.elements.mobile.ByExecutor;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
@@ -7,12 +9,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.lang3.StringUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.dimension.utils.CustomLogger;
 
@@ -285,4 +282,9 @@ public final class DriverUtils {
         return findElementOrElse(null, by, null);
     }
 
+    public static String getClipboardText() {
+        return DriverController.getInstance().getCurrentPlatform()== Platform.IOS
+                ? ""
+                : ((AndroidDriver) DriverController.getInstance().getDriver()).getClipboardText();
+    }
 }

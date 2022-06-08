@@ -12,5 +12,30 @@
                  iosPath=""
                  type="Select"
                  bind="Подтвердить" name="Accept"/>
+        <element androidPath="com.simplemobiletools.gallery:id/directories_grid"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Select"
+                 bind="Список папок" name="Dirs"/>
+        <element androidPath="com.simplemobiletools.gallery:id/media_holder"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Images"
+                 bind="Список изображений" name="ImageList"/>;
+        <element androidPath="com.simplemobiletools.gallery:id/cab_confirm_selection"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Button"
+                 bind="Выбрать группу" name="Confirm"/>
+        <element androidPath="com.google.android.documentsui:id/dir_list"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Files"
+                 bind="Список файлов" name="FileList"/>
+        <element androidPath="com.google.android.documentsui:id/action_menu_select"
+                 androidStrategy="id"
+                 iosPath=""
+                 type="Button"
+                 bind="Выбрать" name="Select"/>
     </elements>
 </page>

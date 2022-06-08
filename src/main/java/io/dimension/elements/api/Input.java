@@ -1,12 +1,13 @@
 package io.dimension.elements.api;
 
+import io.dimension.elements.base.interfaces.Clickable;
 import io.dimension.elements.base.interfaces.HasText;
 import io.dimension.elements.base.interfaces.Editable;
 import io.dimension.elements.mobile.AbstractMobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Input extends AbstractMobileElement implements HasText, Editable {
+public class Input extends AbstractMobileElement implements HasText, Editable, Clickable {
     public Input(WebElement initialElement) {
         super(initialElement);
     }
@@ -28,5 +29,10 @@ public class Input extends AbstractMobileElement implements HasText, Editable {
     @Override
     public void clear() {
         $().getInitialElement().clear();
+    }
+
+    @Override
+    public void click() {
+        $().getInitialElement().click();
     }
 }

@@ -1,9 +1,8 @@
 package ru.vtb.app.chat.tests;
 
-import io.dimension.BaseTest;
-import org.testng.annotations.BeforeTest;
+import io.dimension.DisplayName;
 import ru.vtb.app.chat.tests.pack.VtbTest;
-
+@DisplayName("Проверка быстрой кнопки 'Привет'")
 public class FastButtonsTest_Hi extends VtbTest {
     public void mount() {
         var openChat = actions("Приложение")
@@ -19,11 +18,6 @@ public class FastButtonsTest_Hi extends VtbTest {
         join(login);
         join(openChat);
         join(fastButton);
-    }
-
-    @Override
-    public String getK3Login() {
-        return "20002750";
     }
 
 }
