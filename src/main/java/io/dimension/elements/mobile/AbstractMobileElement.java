@@ -20,6 +20,13 @@ public abstract class AbstractMobileElement extends BaseElement implements Waita
         return byExecutor.isEmpty() ? "" : byExecutor.getTagName();
     }
 
+    @Override
+    public void setFieldName(String name) {
+        super.setFieldName(name);
+        byExecutor.setTitle(name
+        );
+    }
+
     protected ByExecutor byExecutor;
 
     /**

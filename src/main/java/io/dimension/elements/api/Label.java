@@ -1,4 +1,4 @@
-package ru.vtb.messengers.telegram.elements;
+package io.dimension.elements.api;
 
 import io.dimension.elements.base.interfaces.HasText;
 import io.dimension.elements.mobile.AbstractMobileElement;

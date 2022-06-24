@@ -25,4 +25,13 @@
             <capability autoAcceptAlerts="true"/>
         </appInfo>
     </application>
+
+    <application bind="firefox">
+        <appInfo type="android">
+            <capability appActivity="org.mozilla.fenix.HomeActivity"/>
+            <capability appPackage="org.mozilla.firefox"/>
+            <capability fullReset="false"/>
+            <capability noReset="true"/>
+        </appInfo>
+    </application>
 </applications>

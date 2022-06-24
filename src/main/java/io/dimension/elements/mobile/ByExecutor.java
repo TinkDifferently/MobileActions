@@ -1,6 +1,7 @@
 package io.dimension.elements.mobile;
 
 import io.dimension.config.session.DriverUtils;
+import lombok.Setter;
 import org.jetbrains.annotations.Contract;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
@@ -14,7 +15,8 @@ public final class ByExecutor {
     private By locator;
     private WebElement found;
     private final boolean isLocated;
-    private final String title;
+    @Setter
+    private String title;
 
     @Contract(pure = true)
     public ByExecutor(By by, String title) {
@@ -35,15 +37,17 @@ public final class ByExecutor {
             if (locator == null) {
                 CustomLogger.fail("Пустой локатор");
             }
-            found = timeout==-1? DriverUtils.findNullableElement(locator) :DriverUtils.waitFor(timeout,driver->driver.findElement(locator));
+            found = timeout == -1 ?
+                    DriverUtils.findNullableElement(locator)
+                    : DriverUtils.waitFor(timeout, driver -> driver.findElement(locator));
         }
-        if (found==null){
+        if (found == null) {
             throw new AssertionError(String.format("Не удалось найти элемент '%s'", title));
         }
         return found;
     }
 
-    private WebElement getElement(){
+    private WebElement getElement() {
         return getElement(-1);
     }
 

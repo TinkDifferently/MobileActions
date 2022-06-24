@@ -19,7 +19,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -145,8 +144,8 @@ public class AppAction extends PageAction {
     void addPhoto(@Parameter("Повтор") boolean retry) {
         element("Добавить вложение").as(Clickable.class)
                 .click();
-        element("Сделать фото").as(Clickable.class)
-                .click();
+        element("Источник вложения").as(Select.class)
+                .select("Сделать фотографию");
         dispatch("Устройство")
                 .data("Повтор", retry)
                 .action("Сделать фотографию")
@@ -279,7 +278,8 @@ public class AppAction extends PageAction {
 
     @MobileAction(value = "Копировать последнее сообщение")
     @Step("Скопировано последнее сообщение")
-    void copyMessage() {
+    void copyMessage() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(4);
         var options = (List<? extends SelectableItem>) element("Сообщения").as(Select.class)
                 .getOptions();
         var option = DriverController.getInstance().getCurrentPlatform().is(Platform.IOS)
